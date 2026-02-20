@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neon Tic Tac Toe</title>
+  <link rel="stylesheet" href="tictactoe.css" />
+</head>
+<body>
+
+  <div class="game-container">
+    <h1>✨ Tic Tac Toe</h1>
+
+    <!-- Mode Selection Flashcards -->
+    <div class="mode-cards">
+      <div class="mode-card active" id="pvpCard">👥 Player vs Player</div>
+      <div class="mode-card" id="aiCard">🤖 Player vs AI</div>
+    </div>
+
+    <!-- AI Difficulty Selection -->
+    <div class="difficulty-section" id="difficultySection" style="display:none;">
+      <label>AI Difficulty:</label>
+      <select id="difficulty">
+        <option value="easy">😊 Easy</option>
+        <option value="medium">🤔 Medium</option>
+        <option value="hard">😈 Hard</option>
+      </select>
+    </div>
+
+    <!-- Score Board -->
+    <div class="scoreboard" id="scoreboard" style="display:none;">
+      <div class="score-item">
+        <span id="playerXScore">0</span>
+        <span id="playerXLabel">Player X</span>
+      </div>
+      <div class="score-divider">-</div>
+      <div class="score-item">
+        <span id="playerOScore">0</span>
+        <span id="playerOLabel">Player O</span>
+      </div>
+      <div class="score-item">
+        <span id="drawScore">0</span>
+        <span>Draws</span>
+      </div>
+    </div>
+
+    <!-- Name Inputs -->
+    <div class="player-inputs" id="playerInputs">
+      <div class="input-row">
+        <input type="text" id="playerX" placeholder="Player X Name" />
+      </div>
+      <div class="input-row" id="playerORow">
+        <input type="text" id="playerO" placeholder="Player O Name" />
+      </div>
+      <button id="startGame">Start Game</button>
+    </div>
+
+    <div id="status" style="display:none;"></div>
+
+    <div class="board" id="board" style="display:none;" role="grid" aria-label="Tic Tac Toe Game Board">
+      <button class="cell" aria-label="Cell 1" data-index="0"></button>
+      <button class="cell" aria-label="Cell 2" data-index="1"></button>
+      <button class="cell" aria-label="Cell 3" data-index="2"></button>
+      <button class="cell" aria-label="Cell 4" data-index="3"></button>
+      <button class="cell" aria-label="Cell 5" data-index="4"></button>
+      <button class="cell" aria-label="Cell 6" data-index="5"></button>
+      <button class="cell" aria-label="Cell 7" data-index="6"></button>
+      <button class="cell" aria-label="Cell 8" data-index="7"></button>
+      <button class="cell" aria-label="Cell 9" data-index="8"></button>
+    </div>
+
+    <div class="game-controls" id="gameControls" style="display:none;">
+      <button id="restart">🔄 New Round</button>
+      <button id="resetStats">📊 Reset Stats</button>
+    </div>
+
+    <!-- Game Statistics -->
+    <div class="stats-section" id="statsSection" style="display:none;">
+      <h3>📈 Game Statistics</h3>
+      <div class="stats-grid">
+        <div>Games Played: <span id="totalGames">0</span></div>
+        <div>Win Rate: <span id="winRate">0%</span></div>
+        <div>Fastest Win: <span id="fastestWin">--</span></div>
+        <div>Avg. Game Time: <span id="avgTime">--</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="tictactoe.js"></script>
+</body>
+</html>

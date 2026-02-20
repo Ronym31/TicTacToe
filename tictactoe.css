@@ -1,0 +1,374 @@
+/* Background */
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:20px 10px;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  font-family:Segoe UI, sans-serif;
+  color:white;
+  box-sizing:border-box;
+}
+
+/* Container */
+.game-container{
+  text-align:center;
+  padding:30px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+  box-shadow:0 0 20px rgba(0,255,255,0.4);
+  max-width:500px;
+  width:90%;
+  max-height:90vh;
+  overflow-y:auto;
+  margin:auto;
+}
+
+/* Player Inputs */
+.player-inputs{
+  margin:20px 0;
+}
+
+.input-row{
+  margin:10px 0;
+  transition:all 0.3s ease;
+}
+
+.player-inputs input{
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:rgba(255,255,255,0.9);
+  color:black;
+  font-weight:bold;
+  width:200px;
+  max-width:100%;
+  box-sizing:border-box;
+  font-size:14px;
+}
+
+.player-inputs input:focus{
+  outline:3px solid cyan;
+  outline-offset:2px;
+}
+
+.player-inputs button{
+  margin-top:15px;
+}
+
+/* Difficulty Selection */
+.difficulty-section{
+  margin:15px 0;
+  padding:10px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.08);
+}
+
+.difficulty-section label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:bold;
+  color:cyan;
+}
+
+/* Scoreboard */
+.scoreboard{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  margin:20px 0;
+  padding:15px;
+  background:rgba(0,255,255,0.1);
+  border-radius:12px;
+  border:1px solid rgba(0,255,255,0.3);
+}
+
+.score-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+}
+
+.score-item span:first-child{
+  font-size:24px;
+  font-weight:bold;
+  color:cyan;
+}
+
+.score-item span:last-child{
+  font-size:12px;
+  opacity:0.8;
+}
+
+.score-divider{
+  font-size:20px;
+  opacity:0.6;
+}
+
+/* Game Controls */
+.game-controls{
+  margin:15px 0;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* Board */
+.board{
+  display:grid;
+  grid-template-columns:repeat(3,100px);
+  gap:10px;
+  margin:20px 0;
+}
+
+/* Cells */
+.cell{
+  width:100px;
+  height:100px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:40px;
+  cursor:pointer;
+  border:2px solid transparent;
+  border-radius:12px;
+  background:rgba(255,255,255,0.1);
+  transition:all 0.3s ease;
+  color:white;
+  font-weight:bold;
+  outline:none;
+  position:relative;
+  overflow:hidden;
+}
+
+.cell:hover{
+  background:rgba(0,255,255,0.3);
+  transform:scale(1.05);
+  border-color:rgba(0,255,255,0.5);
+}
+
+.cell:focus{
+  outline:3px solid cyan;
+  outline-offset:2px;
+}
+
+.cell.winning-cell{
+  background:rgba(0,255,0,0.3) !important;
+  border-color:lime !important;
+  animation:winPulse 0.6s ease-in-out;
+}
+
+.cell.move-animation{
+  animation:cellClick 0.3s ease;
+}
+
+@keyframes cellClick{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.2); }
+  100%{ transform:scale(1); }
+}
+
+@keyframes winPulse{
+  0%, 100%{ transform:scale(1); }
+  50%{ transform:scale(1.1); }
+}
+
+select{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:rgba(255,255,255,0.9);
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+
+select:focus{
+  outline:3px solid cyan;
+  outline-offset:2px;
+}
+
+.mode-cards{
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  margin-bottom:15px;
+  flex-wrap:wrap;
+}
+
+.mode-card{
+  padding:12px 20px;
+  border-radius:12px;
+  cursor:pointer;
+  background:rgba(255,255,255,0.1);
+  transition:all 0.3s ease;
+  border:2px solid transparent;
+  outline:none;
+}
+
+.mode-card:hover{
+  transform:scale(1.05);
+  background:rgba(0,255,255,0.3);
+  border-color:rgba(0,255,255,0.5);
+}
+
+.mode-card:focus{
+  outline:3px solid cyan;
+  outline-offset:2px;
+}
+
+.mode-card.active{
+  background:cyan;
+  color:black;
+  font-weight:bold;
+  border-color:cyan;
+}
+
+/* Statistics */
+.stats-section{
+  margin-top:20px;
+  padding:15px;
+  background:rgba(255,255,255,0.05);
+  border-radius:12px;
+  border:1px solid rgba(0,255,255,0.2);
+}
+
+.stats-section h3{
+  margin:0 0 15px 0;
+  color:cyan;
+  font-size:18px;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  font-size:14px;
+}
+
+.stats-grid div{
+  padding:8px;
+  background:rgba(255,255,255,0.1);
+  border-radius:8px;
+}
+
+/* Button */
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  background:cyan;
+  color:black;
+  font-weight:bold;
+  transition:all 0.3s ease;
+  font-size:14px;
+  outline:none;
+}
+
+button:hover{
+  transform:scale(1.05);
+  background:rgba(0,255,255,0.8);
+}
+
+button:focus{
+  outline:3px solid rgba(0,255,255,0.5);
+  outline-offset:2px;
+}
+
+button:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+  transform:none;
+}
+
+#resetStats{
+  background:rgba(255,100,100,0.8);
+}
+
+#resetStats:hover{
+  background:rgba(255,100,100,1);
+}
+
+/* Status with enhanced styling */
+#status{
+  font-size:18px;
+  margin:15px 0;
+  padding:10px;
+  border-radius:8px;
+  background:rgba(0,255,255,0.1);
+  border:1px solid rgba(0,255,255,0.3);
+  font-weight:bold;
+}
+
+/* Responsive */
+@media(max-width:500px){
+  .game-container{
+    padding:20px;
+  }
+  .board{
+    grid-template-columns:repeat(3,80px);
+  }
+  .cell{
+    width:80px;
+    height:80px;
+    font-size:32px;
+  }
+  .scoreboard{
+    flex-direction:column;
+    gap:10px;
+    padding:10px;
+  }
+  .score-item{
+    flex-direction:row;
+    gap:10px;
+  }
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+  .mode-cards{
+    flex-direction:column;
+    gap:10px;
+  }
+  .mode-card{
+    padding:10px 15px;
+  }
+  .player-inputs input{
+    width:100%;
+    max-width:250px;
+  }
+  .game-controls{
+    flex-direction:column;
+    gap:8px;
+  }
+  .stats-section{
+    font-size:12px;
+  }
+  body{
+    padding:10px 5px;
+  }
+  .game-container{
+    padding:20px 15px;
+    max-height:95vh;
+  }
+}
+
+@media(max-height:700px){
+  body{
+    align-items:flex-start;
+    padding:10px;
+  }
+  .game-container{
+    margin-top:0;
+  }
+  .stats-section{
+    display:none !important;
+  }
+}
