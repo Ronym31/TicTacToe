@@ -29,11 +29,11 @@ A small, responsive Tic-Tac-Toe web app demonstrating frontend development conce
 - `assets/screenshots/` — place screenshots for submission
 
 ## How to Run
-1. Open `tictactoe.html` directly in a browser, or serve the folder to avoid localStorage/file:// quirks:
+1. Open `index.html` directly in a browser, or serve the folder to avoid localStorage/file:// quirks:
 
 ```bash
 npx http-server .
-# then open http://localhost:8080/tictactoe.html
+# then open http://localhost:8080/index.html
 ```
 
 2. Choose `Player vs Player` or `Player vs AI`, fill names (optional), choose difficulty for AI, and click `Start Game`.
