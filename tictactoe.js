@@ -3,6 +3,7 @@ const cells = document.querySelectorAll(".cell");
 const statusText = document.getElementById("status");
 const restartBtn = document.getElementById("restart");
 const resetStatsBtn = document.getElementById("resetStats");
+const exportStatsBtn = document.getElementById("exportStats");
 const startBtn = document.getElementById("startGame");
 
 const boardDiv = document.getElementById("board");
@@ -378,6 +379,24 @@ function saveStats() {
   localStorage.setItem('ticTacToeStats', JSON.stringify(gameStats));
 }
 
+function exportStats() {
+  const exportData = {
+    exportedAt: new Date().toISOString(),
+    stats: gameStats
+  };
+
+  const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  link.href = url;
+  link.download = `tictactoe-stats-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
 function loadStats() {
   const saved = localStorage.getItem('ticTacToeStats');
   if (saved) {
@@ -417,6 +436,11 @@ function handleKeydown(e) {
 restartBtn.onclick = () => {
   startNewRound();
   playSound(800, 100);
+};
+
+exportStatsBtn.onclick = () => {
+  exportStats();
+  playSound(700, 120);
 };
 
 resetStatsBtn.onclick = () => {
